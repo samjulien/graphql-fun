@@ -48,7 +48,7 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app, path: "/graphql" });
 
-const eraseDatabaseOnSync = false;
+const eraseDatabaseOnSync = true;
 
 sequelize.sync({ force: eraseDatabaseOnSync }).then(async () => {
   if (eraseDatabaseOnSync) {
@@ -66,6 +66,7 @@ const createUsersWithMessages = async () => {
       username: "rwieruch",
       email: "hello@robin.com",
       password: "rwieruch",
+      role: "ADMIN",
       messages: [
         {
           text: "Published the Road to learn React"
@@ -81,6 +82,7 @@ const createUsersWithMessages = async () => {
       username: "ddavids",
       email: "hello@david.com",
       password: "ddavids",
+      role: "USER",
       messages: [
         {
           text: "Happy to release ..."
